@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glacier View Lodge - Woud Voyages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Police Signika Negative */
+        @font-face {
+            font-family: 'Signika Negative';
+            src: url('/fonts/SignikaNegative-VariableFont_wght.ttf') format('truetype-variations');
+            font-weight: 300 700;
+            font-style: normal;
+        }
+        .font-signika-negative {
+            font-family: 'Signika Negative', 'Playfair Display', serif;
+        }
+        
+        .gallery-image {
+            transition: transform 0.3s ease;
+        }
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- En-tête -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/">
+                <img src="/Woud_black.png" alt="Logo Woud" class="h-12 inline-block align-middle">
+            </a>
+            <a href="/#contact" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">
+                Contact
+            </a>
+        </div>
+    </header>
+
+    <!-- Bannière principale -->
+    <div class="relative h-[60vh]">
+        <img src="/alaska glacier view inn 1.jpg" alt="Glacier View Lodge" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <h1 class="text-5xl text-white font-signika-negative font-bold">Glacier View Lodge</h1>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Informations principales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div>
+                <h2 class="text-3xl font-signika-negative font-bold mb-6">À propos de l'hôtel</h2>
+                <p class="text-gray-600 mb-4">
+                    Le Glacier View Lodge est un établissement unique en Islande, offrant une vue imprenable sur les 
+                    glaciers et les aurores boréales. Notre lodge combine design moderne et confort nordique pour une 
+                    expérience authentique.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Sources chaudes naturelles privatives</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Restaurant gastronomique local</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Observatoire des aurores boréales</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-signika-negative font-bold mb-6">Accessibilité</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Personnes à mobilité réduite</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Chambres adaptées disponibles</li>
+                        <li>• Accès facilité aux sources chaudes</li>
+                        <li>• Transport adapté pour les excursions</li>
+                        <li>• Personnel formé à l'assistance</li>
+                        <li>• Équipements adaptés pour les activités</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galerie photos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-signika-negative font-bold mb-6">Galerie photos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="/alaska glacier view lodge 3.jpg" alt="Vue extérieure" class="w-full h-64 object-cover gallery-image">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="/alaska glacier view lodge 2.webp" alt="Chambre" class="w-full h-64 object-cover gallery-image">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="/alaska glacier view lodge 4.jpg" alt="Sources chaudes" class="w-full h-64 object-cover gallery-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Points d'intérêt -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-signika-negative font-bold mb-6">Points d'intérêt à proximité</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Lagon bleu</h3>
+                    <p class="text-gray-600">À 20 minutes en voiture</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Cercle d'or</h3>
+                    <p class="text-gray-600">À 1 heure en voiture</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Aurores boréales</h3>
+                    <p class="text-gray-600">Observable depuis l'hôtel</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Réservation -->
+        <section class="bg-white p-8 rounded-lg shadow-md">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-signika-negative font-bold mb-4">Réserver votre séjour</h2>
+                <p class="text-xl text-blue-600 font-bold">À partir de 1.800€ / semaine</p>
+            </div>
+            <button onclick="openReservationModal('Glacier View Lodge')" class="w-full md:w-auto mx-auto block bg-blue-600 text-white py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">
+                Réserver maintenant
+            </button>
+        </section>
+    </main>
+
+    <!-- Modal de réservation -->
+    <div id="reservationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-['Playfair_Display']" id="modalHotelName"></h3>
+                <button onclick="closeReservationModal()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form id="reservationForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Date d'arrivée *</label>
+                    <input type="date" id="arrivalDate" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required min="">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Date de départ *</label>
+                    <input type="date" id="departureDate" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required min="">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Nombre de personnes *</label>
+                    <input type="number" min="1" max="10" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Nom complet *</label>
+                    <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Email *</label>
+                    <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Téléphone</label>
+                    <input type="tel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Vérifier la disponibilité
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Définir la date minimale à aujourd'hui
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('arrivalDate').min = today;
+        document.getElementById('departureDate').min = today;
+
+        // Validation des dates
+        document.getElementById('arrivalDate').addEventListener('change', function() {
+            const arrivalDate = this.value;
+            const departureInput = document.getElementById('departureDate');
+            
+            // La date de départ doit être après la date d'arrivée
+            departureInput.min = arrivalDate;
+            
+            // Si la date de départ est antérieure à la date d'arrivée, la réinitialiser
+            if (departureInput.value && departureInput.value < arrivalDate) {
+                departureInput.value = '';
+            }
+        });
+
+        // Fonctions pour le modal de réservation
+        function openReservationModal(hotelName) {
+            document.getElementById('modalHotelName').textContent = hotelName;
+            document.getElementById('reservationModal').classList.remove('hidden');
+            document.getElementById('reservationModal').classList.add('flex');
+        }
+
+        function closeReservationModal() {
+            document.getElementById('reservationModal').classList.add('hidden');
+            document.getElementById('reservationModal').classList.remove('flex');
+        }
+
+        // Fermer le modal en cliquant en dehors
+        document.getElementById('reservationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReservationModal();
+            }
+        });
+
+        // Gérer la soumission du formulaire
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const arrivalDate = document.getElementById('arrivalDate').value;
+            const departureDate = document.getElementById('departureDate').value;
+            
+            if (!arrivalDate || !departureDate) {
+                alert('Veuillez sélectionner les dates d\'arrivée et de départ.');
+                return;
+            }
+            
+            if (departureDate <= arrivalDate) {
+                alert('La date de départ doit être postérieure à la date d\'arrivée.');
+                return;
+            }
+            
+            // Ici, vous pouvez ajouter la logique pour traiter la réservation
+            alert('Demande de réservation envoyée ! Nous vous contacterons bientôt.');
+            closeReservationModal();
+        });
+    </script>
+
+    <!-- Mention site vitrine -->
+    <div class="bg-gray-100 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600">
+                ⚠️ Ce site est un site vitrine. Les prix, hôtels et informations présentés sont fictifs et à des fins de démonstration uniquement.
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

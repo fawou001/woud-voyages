@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Administration Woud Voyages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- En-tête d'administration -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="/" class="flex items-center space-x-4">
+                    <img src="/Woud_black.png" alt="Logo Woud" class="h-10">
+                    <h1 class="text-xl font-bold text-gray-800">Administration</h1>
+                </a>
+            </div>
+            <% if (typeof user !== 'undefined' && user) { %>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-600">Bienvenue, <%= user.username %></span>
+                <% if (typeof userRole !== 'undefined' && userRole) { %>
+                    <span class="px-2 py-1 text-xs rounded-full 
+                        <%= userRole === 'admin' ? 'bg-red-100 text-red-800' : '' %>
+                        <%= userRole === 'moderator' ? 'bg-purple-100 text-purple-800' : '' %>
+                        <%= userRole === 'editor' ? 'bg-blue-100 text-blue-800' : '' %>
+                        <%= userRole === 'viewer' ? 'bg-gray-100 text-gray-800' : '' %>">
+                        <%= userRole %>
+                    </span>
+                <% } %>
+                <a href="/admin/logout" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                </a>
+            </div>
+            <% } %>
+        </div>
+    </header>
+    <!-- Navigation d'administration -->
+    <% if (typeof user !== 'undefined' && user) { %>
+    <nav class="bg-blue-600 text-white">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex space-x-6">
+                <a href="/admin" class="hover:text-blue-200 transition duration-200 <%= (active === 'dashboard') ? 'font-bold underline' : '' %>">
+                    <i class="fas fa-tachometer-alt mr-2"></i>Tableau de bord
+                </a>
+                <a href="/admin/destinations" class="hover:text-blue-200 transition duration-200 <%= (active === 'destinations') ? 'font-bold underline' : '' %>">
+                    <i class="fas fa-map-marker-alt mr-2"></i>Destinations
+                </a>
+                <% if (typeof userRole !== 'undefined' && (userRole === 'admin' || userRole === 'moderator')) { %>
+                <a href="/admin/destinations/new" class="hover:text-blue-200 transition duration-200 <%= (active === 'new') ? 'font-bold underline' : '' %>">
+                    <i class="fas fa-plus mr-2"></i>Nouvelle destination
+                </a>
+                <% } %>
+                <a href="/admin/statistics" class="hover:text-blue-200 transition duration-200 <%= (active === 'statistics') ? 'font-bold underline' : '' %>">
+                    <i class="fas fa-chart-bar mr-2"></i>Statistiques
+                </a>
+                <% if (typeof userRole !== 'undefined' && userRole === 'admin') { %>
+                <a href="/admin/users" class="hover:text-blue-200 transition duration-200 <%= (active === 'users') ? 'font-bold underline' : '' %>">
+                    <i class="fas fa-users mr-2"></i>Utilisateurs
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+    <!-- Contenu principal -->
+    <main class="container mx-auto px-4 py-8">
+        <%- body %>
+    </main>
+</body>
+</html> 

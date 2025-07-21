@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubud Jungle Retreat - Woud Voyages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Police Signika Negative */
+        @font-face {
+            font-family: 'Signika Negative';
+            src: url('/fonts/SignikaNegative-VariableFont_wght.ttf') format('truetype-variations');
+            font-weight: 300 700;
+            font-style: normal;
+        }
+        .font-signika-negative {
+            font-family: 'Signika Negative', 'Playfair Display', serif;
+        }
+        
+        .gallery-image {
+            transition: transform 0.3s ease;
+        }
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- En-tête -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/">
+                <img src="/Woud_black.png" alt="Logo Woud" class="h-12 inline-block align-middle">
+            </a>
+            <a href="/#contact" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">
+                Contact
+            </a>
+        </div>
+    </header>
+
+    <!-- Bannière principale -->
+    <div class="relative h-[60vh]">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" alt="Ubud Jungle Retreat" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <h1 class="text-5xl text-white font-signika-negative font-bold">Ubud Jungle Retreat</h1>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Informations principales -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div>
+                <h2 class="text-3xl font-signika-negative font-bold mb-6">À propos de l'hôtel</h2>
+                <p class="text-gray-600 mb-4">
+                    L'Ubud Jungle Retreat est un havre de paix niché au cœur de la jungle balinaise. 
+                    Nos villas privatives offrent une expérience unique alliant luxe moderne et authenticité 
+                    locale, avec vue panoramique sur la forêt tropicale.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Piscine privée avec vue sur la jungle</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Spa traditionnel balinais</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Restaurant gastronomique local</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-signika-negative font-bold mb-6">Accessibilité</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Personnes à mobilité réduite</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Accès adapté aux villas</li>
+                        <li>• Chambres accessibles disponibles</li>
+                        <li>• Transport privé accessible</li>
+                        <li>• Salle de bain adaptée</li>
+                        <li>• Accès facilité aux espaces communs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galerie photos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-signika-negative font-bold mb-6">Galerie photos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" alt="Vue extérieure" class="w-full h-64 object-cover gallery-image">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Villa" class="w-full h-64 object-cover gallery-image">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4" alt="Piscine" class="w-full h-64 object-cover gallery-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Points d'intérêt -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-signika-negative font-bold mb-6">Points d'intérêt à proximité</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Forêt des singes</h3>
+                    <p class="text-gray-600">À 10 minutes à pied</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Palais d'Ubud</h3>
+                    <p class="text-gray-600">À 15 minutes à pied</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Marché traditionnel</h3>
+                    <p class="text-gray-600">À 5 minutes à pied</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Réservation -->
+        <section class="bg-white p-8 rounded-lg shadow-md">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-signika-negative font-bold mb-4">Réserver votre séjour</h2>
+                <p class="text-xl text-blue-600 font-bold">À partir de 950€ / semaine</p>
+            </div>
+            <button onclick="openReservationModal('Ubud Jungle Retreat')" class="w-full md:w-auto mx-auto block bg-blue-600 text-white py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">
+                Réserver maintenant
+            </button>
+        </section>
+    </main>
+
+    <!-- Modal de réservation -->
+    <div id="reservationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold mb-4">Réserver votre séjour</h3>
+            <form id="reservationForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Nom complet</label>
+                    <input type="text" class="w-full p-2 border rounded" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" class="w-full p-2 border rounded" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Téléphone</label>
+                    <input type="tel" class="w-full p-2 border rounded" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Dates de séjour</label>
+                    <input type="text" class="w-full p-2 border rounded" placeholder="JJ/MM/AAAA - JJ/MM/AAAA" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Nombre de personnes</label>
+                    <input type="number" class="w-full p-2 border rounded" min="1" required>
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="closeReservationModal()" class="px-4 py-2 text-gray-600 hover:text-gray-800">Annuler</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openReservationModal(hotelName) {
+            document.getElementById('reservationModal').classList.remove('hidden');
+            document.getElementById('reservationModal').classList.add('flex');
+        }
+
+        function closeReservationModal() {
+            document.getElementById('reservationModal').classList.add('hidden');
+            document.getElementById('reservationModal').classList.remove('flex');
+        }
+
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ici, vous pouvez ajouter la logique pour envoyer le formulaire
+            alert('Votre demande de réservation a été envoyée !');
+            closeReservationModal();
+        });
+    </script>
+
+    <!-- Mention site vitrine -->
+    <div class="bg-gray-100 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600">
+                ⚠️ Ce site est un site vitrine. Les prix, hôtels et informations présentés sont fictifs et à des fins de démonstration uniquement.
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

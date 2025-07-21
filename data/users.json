@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2b$10$O8sChIFXmFfsbjnMzalzHOwkyEVpI45bPiOmN/1IImKzpSGu.OOlO",
+      "email": "admin@woud-voyages.com",
+      "role": "admin",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "username": "test",
+      "email": "test@gmail.com",
+      "password": "$2b$10$XFSrwgKCS4047wLpJyolt.cI2eM2Fp1doSqV04qkR//Ee7pOLPM.6",
+      "role": "editor",
+      "createdAt": "2025-07-09T04:31:38.183Z",
+      "lastLogin": null,
+      "isActive": false
+    },
+    {
+      "id": 3,
+      "username": "moderateur",
+      "email": "moderateur@woud-voyages.com",
+      "password": "$2b$10$XFSrwgKCS4047wLpJyolt.cI2eM2Fp1doSqV04qkR//Ee7pOLPM.6",
+      "role": "moderator",
+      "createdAt": "2025-01-15T00:00:00.000Z",
+      "lastLogin": null,
+      "isActive": true
+    }
+  ]
+}

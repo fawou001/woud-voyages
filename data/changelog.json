@@ -1,0 +1,131 @@
+{
+  "changes": [
+    {
+      "id": 8,
+      "timestamp": "2025-07-12T08:46:52.102Z",
+      "type": "user",
+      "action": "updated",
+      "description": "Utilisateur 'test' mis à jour",
+      "user": "test",
+      "details": {
+        "username": "test",
+        "role": "editor",
+        "changes": [
+          "username",
+          "email",
+          "password",
+          "role",
+          "isActive"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "timestamp": "2025-07-12T08:45:59.234Z",
+      "type": "user",
+      "action": "updated",
+      "description": "Utilisateur 'test' mis à jour",
+      "user": "admin",
+      "details": {
+        "username": "test",
+        "role": "admin",
+        "changes": [
+          "username",
+          "email",
+          "password",
+          "role",
+          "isActive"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "timestamp": "2025-07-12T08:45:10.848Z",
+      "type": "user",
+      "action": "updated",
+      "description": "Utilisateur 'test' mis à jour",
+      "user": "admin",
+      "details": {
+        "username": "test",
+        "role": "moderator",
+        "changes": [
+          "username",
+          "email",
+          "password",
+          "role",
+          "isActive"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "timestamp": "2025-07-09T04:31:38.185Z",
+      "type": "user",
+      "action": "created",
+      "description": "Nouvel utilisateur 'test' créé",
+      "user": "admin",
+      "details": {
+        "username": "test",
+        "role": "editor",
+        "email": "test@gmail.com"
+      }
+    },
+    {
+      "id": 1,
+      "type": "destination",
+      "action": "created",
+      "description": "Nouvelle destination 'Bali Resort & Spa' ajoutée",
+      "user": "admin",
+      "timestamp": "2024-07-08T15:35:10.791Z",
+      "details": {
+        "destination": "Bali Resort & Spa",
+        "location": "Bali, Indonésie",
+        "price": "1200€"
+      }
+    },
+    {
+      "id": 2,
+      "type": "destination",
+      "action": "updated",
+      "description": "Destination 'Denali Wilderness Lodge' mise à jour",
+      "user": "admin",
+      "timestamp": "2024-07-08T14:20:30.123Z",
+      "details": {
+        "destination": "Denali Wilderness Lodge",
+        "changes": [
+          "Prix mis à jour",
+          "Description améliorée"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "user",
+      "action": "created",
+      "description": "Nouvel utilisateur 'moderator' créé",
+      "user": "admin",
+      "timestamp": "2024-07-08T13:15:45.456Z",
+      "details": {
+        "username": "moderator",
+        "role": "moderator",
+        "email": "moderator@woud-voyages.com"
+      }
+    },
+    {
+      "id": 4,
+      "type": "content",
+      "action": "updated",
+      "description": "Page d'accueil mise à jour - police d'écriture modifiée",
+      "user": "admin",
+      "timestamp": "2024-07-08T12:30:20.789Z",
+      "details": {
+        "page": "Accueil",
+        "changes": [
+          "Police BucklaneScript appliquée",
+          "Animation améliorée"
+        ]
+      }
+    }
+  ],
+  "lastUpdated": "2025-07-12T08:46:52.102Z"
+}
