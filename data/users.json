@@ -28,6 +28,16 @@
       "createdAt": "2025-01-15T00:00:00.000Z",
       "lastLogin": null,
       "isActive": true
+    },
+    {
+      "id": 4,
+      "username": "Administrateur",
+      "email": "administrateur@woud-voyages.com",
+      "password": "$2b$10$xlYLKsCH3dGQo01E89awcel0NPUvYf7UzsiZhER9tQvBx/ZaPt9tm",
+      "role": "admin",
+      "createdAt": "2025-07-29T07:15:00.000Z",
+      "lastLogin": null,
+      "isActive": true
     }
   ]
 }

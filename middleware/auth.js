@@ -122,6 +122,13 @@ async function authenticateUser(username, password) {
                 password: '$2b$10$coJMh5O4WYEWlVzrr.Hmnu8hpBbi4yyxCiJNJifWAZk.mF/2dTC4K', // test123
                 email: 'test@gmail.com',
                 role: 'editor'
+            },
+            {
+                id: 4,
+                username: 'Administrateur',
+                password: '$2b$10$xlYLKsCH3dGQo01E89awcel0NPUvYf7UzsiZhER9tQvBx/ZaPt9tm', // Administrateur123
+                email: 'administrateur@woud-voyages.com',
+                role: 'admin'
             }
         ];
         
