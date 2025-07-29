@@ -57,28 +57,31 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
-// Route pour afficher le formulaire de test
-router.get('/test-form', (req, res) => {
-    res.render('admin/test-form');
+// Route de test de connexion simple
+router.get('/test-connection', (req, res) => {
+    res.json({
+        message: 'Route de test de connexion fonctionne !',
+        timestamp: new Date().toISOString(),
+        session: req.session ? 'Session exists' : 'No session',
+        method: req.method,
+        url: req.url
+    });
 });
 
 // Route de test pour le parsing des formulaires
-router.post('/test-form', (req, res) => {
-    console.log('🧪 === TEST PARSING FORMULAIRE ===');
-    console.log('📝 Méthode:', req.method);
-    console.log('📝 URL:', req.url);
-    console.log('📝 Body:', req.body);
-    console.log('📝 Content-Type:', req.headers['content-type']);
-    
+router.post('/test-connection', (req, res) => {
     res.json({
-        success: true,
-        message: 'Formulaire reçu',
+        message: 'POST reçu !',
         body: req.body,
-        headers: {
-            'content-type': req.headers['content-type'],
-            'user-agent': req.headers['user-agent']
-        }
+        timestamp: new Date().toISOString(),
+        method: req.method,
+        url: req.url
     });
+});
+
+// Route pour afficher le formulaire de test
+router.get('/test-form', (req, res) => {
+    res.render('admin/test-form');
 });
 
 // Route de test simple pour Vercel
@@ -174,7 +177,9 @@ router.get('/test-auth', (req, res) => {
 
 // Route de connexion - GET
 router.get('/login', (req, res) => {
+    console.log('📝 GET /admin/login - Affichage page de connexion');
     if (req.session && req.session.userId) {
+        console.log('✅ Utilisateur déjà connecté, redirection vers /admin');
         return res.redirect('/admin');
     }
     res.render('admin/login', { title: 'Connexion Administration', layout: 'layouts/admin', active: '' });
@@ -186,7 +191,7 @@ router.post('/login', async (req, res) => {
     console.log('📝 Méthode:', req.method);
     console.log('📝 URL:', req.url);
     console.log('📝 Body:', req.body);
-    console.log('📝 Headers:', req.headers);
+    console.log('📝 Content-Type:', req.headers['content-type']);
     
     const { username, password } = req.body;
     
