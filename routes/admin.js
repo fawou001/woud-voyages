@@ -57,6 +57,108 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
+// Route de test simple (HTML direct)
+router.get('/test-html', (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Test HTML Direct</title>
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+                .success { color: green; font-size: 24px; }
+                .info { color: blue; margin: 20px; }
+            </style>
+        </head>
+        <body>
+            <div class="success">✅ Route de test fonctionne !</div>
+            <div class="info">
+                <p>Timestamp: ${new Date().toISOString()}</p>
+                <p>URL: ${req.url}</p>
+                <p>Méthode: ${req.method}</p>
+            </div>
+            <div class="info">
+                <a href="/admin/direct-login" style="color: blue;">🔐 Aller à la connexion directe</a>
+            </div>
+        </body>
+        </html>
+    `);
+});
+
+// Route de connexion HTML directe (sans EJS)
+router.get('/direct-login', (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Connexion Directe - Woud Voyages</title>
+            <style>
+                body { font-family: Arial, sans-serif; background-color: #f3f4f6; margin: 0; padding: 20px; }
+                .container { max-width: 400px; margin: 50px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+                h1 { text-align: center; color: #1f2937; margin-bottom: 30px; }
+                .form-group { margin-bottom: 20px; }
+                label { display: block; margin-bottom: 5px; color: #374151; font-weight: bold; }
+                input { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 5px; box-sizing: border-box; }
+                button { width: 100%; padding: 12px; background-color: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+                button:hover { background-color: #2563eb; }
+                .users { margin-top: 20px; padding: 15px; background-color: #f9fafb; border-radius: 5px; }
+                .users h3 { margin-top: 0; color: #374151; }
+                .user { margin: 5px 0; color: #6b7280; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🔐 Connexion Directe</h1>
+                
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur:</label>
+                    <input type="text" id="username" placeholder="Votre nom d'utilisateur">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" placeholder="Votre mot de passe">
+                </div>
+                
+                <button onclick="login()">Se connecter</button>
+                
+                <div class="users">
+                    <h3>👥 Utilisateurs disponibles:</h3>
+                    <div class="user">• Administrateur / Administrateur123</div>
+                    <div class="user">• admin / admin123</div>
+                    <div class="user">• moderateur / moderateur123</div>
+                    <div class="user">• test / test123</div>
+                </div>
+            </div>
+            
+            <script>
+                function login() {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    
+                    if (!username || !password) {
+                        alert('Veuillez remplir tous les champs');
+                        return;
+                    }
+                    
+                    // Rediriger vers la route d'authentification directe
+                    window.location.href = '/admin/auth/' + encodeURIComponent(username) + '/' + encodeURIComponent(password);
+                }
+                
+                // Permettre la connexion avec Enter
+                document.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        login();
+                    }
+                });
+            </script>
+        </body>
+        </html>
+    `);
+});
+
 // Route pour la connexion simplifiée
 router.get('/simple-login', (req, res) => {
     res.render('admin/simple-login');
