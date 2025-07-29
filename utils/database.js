@@ -78,17 +78,58 @@ async function deleteDestination(id) {
 async function getAllUsers() {
     try {
         const data = await fs.readFile(USERS_FILE, 'utf8');
-        return JSON.parse(data).users;
+        const usersData = JSON.parse(data);
+        
+        // Si aucun utilisateur n'existe, créer un admin par défaut
+        if (!usersData.users || usersData.users.length === 0) {
+            console.log('🔧 Création d\'un utilisateur admin par défaut...');
+            const hashedPassword = await bcrypt.hash('admin123', 10);
+            const defaultAdmin = {
+                id: 1,
+                username: 'admin',
+                password: hashedPassword,
+                email: 'admin@woud-voyages.com',
+                role: 'admin',
+                createdAt: new Date().toISOString(),
+                isActive: true
+            };
+            
+            usersData.users = [defaultAdmin];
+            await fs.writeFile(USERS_FILE, JSON.stringify(usersData, null, 2));
+            console.log('✅ Utilisateur admin par défaut créé');
+        }
+        
+        return usersData;
     } catch (error) {
         console.error('Erreur lors de la lecture des utilisateurs:', error);
-        return [];
+        // En cas d'erreur, créer un utilisateur par défaut
+        try {
+            const hashedPassword = await bcrypt.hash('admin123', 10);
+            const defaultAdmin = {
+                id: 1,
+                username: 'admin',
+                password: hashedPassword,
+                email: 'admin@woud-voyages.com',
+                role: 'admin',
+                createdAt: new Date().toISOString(),
+                isActive: true
+            };
+            
+            const usersData = { users: [defaultAdmin] };
+            await fs.writeFile(USERS_FILE, JSON.stringify(usersData, null, 2));
+            console.log('✅ Utilisateur admin par défaut créé après erreur');
+            return usersData;
+        } catch (createError) {
+            console.error('Erreur lors de la création de l\'admin par défaut:', createError);
+            return { users: [] };
+        }
     }
 }
 
 async function getUserByUsername(username) {
     try {
-        const users = await getAllUsers();
-        return users.find(user => user.username === username);
+        const usersData = await getAllUsers();
+        return usersData.users.find(user => user.username === username);
     } catch (error) {
         console.error('Erreur lors de la recherche d\'utilisateur:', error);
         return null;

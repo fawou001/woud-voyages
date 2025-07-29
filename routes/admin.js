@@ -57,6 +57,48 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
+// Route de test d'authentification
+router.get('/test-login', async (req, res) => {
+    try {
+        const usersData = await getAllUsers();
+        const adminUser = usersData.users.find(u => u.username === 'admin');
+        
+        if (adminUser) {
+            const isValidPassword = await bcrypt.compare('admin123', adminUser.password);
+            
+            res.json({
+                success: true,
+                adminExists: true,
+                passwordValid: isValidPassword,
+                adminUser: {
+                    id: adminUser.id,
+                    username: adminUser.username,
+                    role: adminUser.role,
+                    isActive: adminUser.isActive
+                },
+                totalUsers: usersData.users.length,
+                users: usersData.users.map(u => ({
+                    username: u.username,
+                    role: u.role,
+                    isActive: u.isActive
+                }))
+            });
+        } else {
+            res.json({
+                success: false,
+                adminExists: false,
+                message: 'Aucun utilisateur admin trouvé'
+            });
+        }
+    } catch (error) {
+        console.error('Erreur test login:', error);
+        res.json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
 // Route de debug pour Vercel
 router.get('/debug', (req, res) => {
     const token = req.cookies?.authToken;
