@@ -57,6 +57,30 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
+// Route pour afficher le formulaire de test
+router.get('/test-form', (req, res) => {
+    res.render('admin/test-form');
+});
+
+// Route de test pour le parsing des formulaires
+router.post('/test-form', (req, res) => {
+    console.log('🧪 === TEST PARSING FORMULAIRE ===');
+    console.log('📝 Méthode:', req.method);
+    console.log('📝 URL:', req.url);
+    console.log('📝 Body:', req.body);
+    console.log('📝 Content-Type:', req.headers['content-type']);
+    
+    res.json({
+        success: true,
+        message: 'Formulaire reçu',
+        body: req.body,
+        headers: {
+            'content-type': req.headers['content-type'],
+            'user-agent': req.headers['user-agent']
+        }
+    });
+});
+
 // Route de test simple pour Vercel
 router.get('/simple-test', (req, res) => {
     res.json({
@@ -158,9 +182,26 @@ router.get('/login', (req, res) => {
 
 // Route de connexion - POST (version avec JWT pour Vercel)
 router.post('/login', async (req, res) => {
+    console.log('🔐 === DÉBUT TENTATIVE DE CONNEXION ===');
+    console.log('📝 Méthode:', req.method);
+    console.log('📝 URL:', req.url);
+    console.log('📝 Body:', req.body);
+    console.log('📝 Headers:', req.headers);
+    
     const { username, password } = req.body;
     
     console.log('🔐 Tentative de connexion pour:', username);
+    console.log('🔐 Mot de passe fourni:', password ? '***' : 'AUCUN');
+    
+    if (!username || !password) {
+        console.log('❌ Données manquantes - username ou password vide');
+        return res.render('admin/login', { 
+            title: 'Connexion Administration',
+            error: 'Nom d\'utilisateur et mot de passe requis',
+            layout: 'layouts/admin',
+            active: ''
+        });
+    }
     
     try {
         const user = await authenticateUser(username, password);
@@ -174,8 +215,15 @@ router.post('/login', async (req, res) => {
             req.session.role = user.role;
             req.session.isAuthenticated = true;
             
+            console.log('📝 Session configurée:', {
+                userId: req.session.userId,
+                username: req.session.username,
+                role: req.session.role
+            });
+            
             // Créer un token JWT
             const token = createJWTToken(user);
+            console.log('🔑 Token JWT créé');
             
             // Définir le cookie JWT
             res.cookie('authToken', token, {
@@ -185,7 +233,9 @@ router.post('/login', async (req, res) => {
                 sameSite: 'lax'
             });
             
-            console.log('✅ Token JWT créé, redirection vers /admin');
+            console.log('🍪 Cookie JWT défini');
+            console.log('✅ Redirection vers /admin');
+            
             return res.redirect('/admin');
         } else {
             console.log('❌ Authentification échouée pour:', username);
