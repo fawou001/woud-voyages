@@ -57,6 +57,31 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
+// Route de debug pour Vercel
+router.get('/debug', (req, res) => {
+    res.json({
+        session: req.session,
+        headers: req.headers,
+        cookies: req.cookies,
+        isAuthenticated: !!(req.session && req.session.userId),
+        timestamp: new Date().toISOString()
+    });
+});
+
+// Route de test pour vérifier l'authentification
+router.get('/test-auth', (req, res) => {
+    console.log('🔍 Test d\'authentification - Session:', req.session);
+    res.json({
+        session: req.session,
+        isAuthenticated: !!(req.session && req.session.userId),
+        user: req.session ? {
+            id: req.session.userId,
+            username: req.session.username,
+            role: req.session.role
+        } : null
+    });
+});
+
 // Route de connexion - GET
 router.get('/login', (req, res) => {
     if (req.session && req.session.userId) {
@@ -65,20 +90,30 @@ router.get('/login', (req, res) => {
     res.render('admin/login', { title: 'Connexion Administration', layout: 'layouts/admin', active: '' });
 });
 
-// Route de connexion - POST
+// Route de connexion - POST (version simplifiée pour Vercel)
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
+    
+    console.log('🔐 Tentative de connexion pour:', username);
     
     try {
         const user = await authenticateUser(username, password);
         
         if (user) {
+            console.log('✅ Authentification réussie pour:', username);
+            
+            // Configuration de session simplifiée
             req.session.userId = user.id;
             req.session.username = user.username;
             req.session.role = user.role;
-            res.redirect('/admin');
+            req.session.isAuthenticated = true;
+            
+            // Redirection immédiate sans save callback
+            console.log('✅ Redirection vers /admin');
+            return res.redirect('/admin');
         } else {
-            res.render('admin/login', { 
+            console.log('❌ Authentification échouée pour:', username);
+            return res.render('admin/login', { 
                 title: 'Connexion Administration',
                 error: 'Identifiant ou mot de passe incorrect',
                 layout: 'layouts/admin',
@@ -86,8 +121,8 @@ router.post('/login', async (req, res) => {
             });
         }
     } catch (error) {
-        console.error('Erreur de connexion:', error);
-        res.render('admin/login', { 
+        console.error('❌ Erreur de connexion:', error);
+        return res.render('admin/login', { 
             title: 'Connexion Administration',
             error: 'Une erreur est survenue lors de la connexion',
             layout: 'layouts/admin',

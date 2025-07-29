@@ -60,19 +60,26 @@ function requirePermission(permission) {
 // Fonction d'authentification
 async function authenticateUser(username, password) {
     try {
+        console.log('🔍 Recherche utilisateur:', username);
         const user = await getUserByUsername(username);
+        
         if (!user) {
+            console.log('❌ Utilisateur non trouvé:', username);
             return null;
         }
 
+        console.log('✅ Utilisateur trouvé:', username, 'Rôle:', user.role);
         const isValidPassword = await bcrypt.compare(password, user.password);
+        
         if (!isValidPassword) {
+            console.log('❌ Mot de passe incorrect pour:', username);
             return null;
         }
 
+        console.log('✅ Authentification réussie pour:', username);
         return user;
     } catch (error) {
-        console.error('Erreur lors de l\'authentification:', error);
+        console.error('❌ Erreur lors de l\'authentification:', error);
         return null;
     }
 }

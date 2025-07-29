@@ -35,7 +35,11 @@ app.use(session({
         secure: false, // Désactivé pour éviter les problèmes en production
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000 // 24 heures
-    }
+    },
+    // Configuration pour environnement serverless
+    name: 'woud-session',
+    rolling: true,
+    unset: 'destroy'
 }));
 
 // Middleware de tracking des vues
