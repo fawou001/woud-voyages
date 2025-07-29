@@ -18,7 +18,7 @@ const {
 const { getRecentChanges, getChangeStats, addChange } = require('../utils/changelog');
 const { getAllUsers, getUserStats, createUser, updateUser, deleteUser } = require('../utils/userManagement');
 
-const { requireAuth, requireAdmin, requireAdminOrModerator, requirePermission, authenticateUser } = require('../middleware/auth');
+const { requireAuth, requireAdmin, requireAdminOrModerator, requirePermission, authenticateUser, createJWTToken } = require('../middleware/auth');
 const { getStatsWithDestinationNames, resetStats } = require('../utils/analytics');
 
 // Configuration de multer pour l'upload d'images
@@ -59,11 +59,24 @@ ensureUploadsDir();
 
 // Route de debug pour Vercel
 router.get('/debug', (req, res) => {
+    const token = req.cookies?.authToken;
+    let jwtUser = null;
+    
+    if (token) {
+        try {
+            const jwt = require('jsonwebtoken');
+            jwtUser = jwt.verify(token, 'woud-voyages-jwt-secret');
+        } catch (error) {
+            console.log('Token JWT invalide:', error.message);
+        }
+    }
+    
     res.json({
         session: req.session,
+        jwtUser: jwtUser,
         headers: req.headers,
         cookies: req.cookies,
-        isAuthenticated: !!(req.session && req.session.userId),
+        isAuthenticated: !!(req.session && req.session.userId) || !!jwtUser,
         timestamp: new Date().toISOString()
     });
 });
@@ -90,7 +103,7 @@ router.get('/login', (req, res) => {
     res.render('admin/login', { title: 'Connexion Administration', layout: 'layouts/admin', active: '' });
 });
 
-// Route de connexion - POST (version simplifiée pour Vercel)
+// Route de connexion - POST (version avec JWT pour Vercel)
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     
@@ -102,14 +115,24 @@ router.post('/login', async (req, res) => {
         if (user) {
             console.log('✅ Authentification réussie pour:', username);
             
-            // Configuration de session simplifiée
+            // Configuration de session
             req.session.userId = user.id;
             req.session.username = user.username;
             req.session.role = user.role;
             req.session.isAuthenticated = true;
             
-            // Redirection immédiate sans save callback
-            console.log('✅ Redirection vers /admin');
+            // Créer un token JWT
+            const token = createJWTToken(user);
+            
+            // Définir le cookie JWT
+            res.cookie('authToken', token, {
+                httpOnly: true,
+                secure: false, // Désactivé pour Vercel
+                maxAge: 24 * 60 * 60 * 1000, // 24 heures
+                sameSite: 'lax'
+            });
+            
+            console.log('✅ Token JWT créé, redirection vers /admin');
             return res.redirect('/admin');
         } else {
             console.log('❌ Authentification échouée pour:', username);
@@ -133,6 +156,10 @@ router.post('/login', async (req, res) => {
 
 // Route de déconnexion
 router.get('/logout', (req, res) => {
+    // Supprimer le cookie JWT
+    res.clearCookie('authToken');
+    
+    // Détruire la session
     req.session.destroy((err) => {
         if (err) {
             console.error('Erreur lors de la déconnexion:', err);

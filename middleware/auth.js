@@ -1,19 +1,38 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { getUserByUsername } = require('../utils/database');
 const { hasPermission, ROLES } = require('../utils/userManagement');
 
-// Middleware pour vérifier si l'utilisateur est connecté
+const JWT_SECRET = process.env.JWT_SECRET || 'woud-voyages-jwt-secret';
+
+// Middleware pour vérifier si l'utilisateur est connecté (session ou JWT)
 function requireAuth(req, res, next) {
+    // Vérifier d'abord la session
     if (req.session && req.session.userId) {
-        next();
-    } else {
-        res.redirect('/admin/login');
+        return next();
     }
+    
+    // Vérifier le token JWT dans les cookies
+    const token = req.cookies?.authToken || req.headers.authorization?.replace('Bearer ', '');
+    
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, JWT_SECRET);
+            req.user = decoded;
+            return next();
+        } catch (error) {
+            console.log('❌ Token JWT invalide:', error.message);
+        }
+    }
+    
+    res.redirect('/admin/login');
 }
 
-// Middleware pour vérifier si l'utilisateur est admin
+// Middleware pour vérifier si l'utilisateur est admin (session ou JWT)
 function requireAdmin(req, res, next) {
-    if (req.session && req.session.userId && req.session.role === 'admin') {
+    const userRole = req.session?.role || req.user?.role;
+    
+    if (userRole === 'admin') {
         next();
     } else {
         res.status(403).render('admin/error', { 
@@ -23,9 +42,11 @@ function requireAdmin(req, res, next) {
     }
 }
 
-// Middleware pour vérifier si l'utilisateur est admin ou modérateur
+// Middleware pour vérifier si l'utilisateur est admin ou modérateur (session ou JWT)
 function requireAdminOrModerator(req, res, next) {
-    if (req.session && req.session.userId && (req.session.role === 'admin' || req.session.role === 'moderator')) {
+    const userRole = req.session?.role || req.user?.role;
+    
+    if (userRole === 'admin' || userRole === 'moderator') {
         next();
     } else {
         res.status(403).render('admin/error', { 
@@ -38,13 +59,13 @@ function requireAdminOrModerator(req, res, next) {
 // Middleware pour vérifier une permission spécifique
 function requirePermission(permission) {
     return function(req, res, next) {
-        if (!req.session || !req.session.userId) {
+        const userRole = req.session?.role || req.user?.role;
+        
+        if (!userRole) {
             return res.redirect('/admin/login');
         }
         
-        const user = {
-            role: req.session.role
-        };
+        const user = { role: userRole };
         
         if (hasPermission(user, permission)) {
             next();
@@ -84,10 +105,24 @@ async function authenticateUser(username, password) {
     }
 }
 
+// Fonction pour créer un token JWT
+function createJWTToken(user) {
+    return jwt.sign(
+        { 
+            id: user.id, 
+            username: user.username, 
+            role: user.role 
+        },
+        JWT_SECRET,
+        { expiresIn: '24h' }
+    );
+}
+
 module.exports = {
     requireAuth,
     requireAdmin,
     requireAdminOrModerator,
     requirePermission,
-    authenticateUser
+    authenticateUser,
+    createJWTToken
 }; 
