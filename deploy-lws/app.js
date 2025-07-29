@@ -27,11 +27,7 @@ app.use(session({
     secret: 'woud-voyages-secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { 
-        secure: false, // Désactivé pour éviter les problèmes en production
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000 // 24 heures
-    }
+    cookie: { secure: process.env.NODE_ENV === 'production' } // sécurisé en production
 }));
 
 // Middleware de tracking des vues

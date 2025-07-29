@@ -1,0 +1,441 @@
+<!-- En-tête -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center">
+            <img src="/Woud_black.png" alt="Logo Woud" class="h-12 inline-block align-middle">
+        </a>
+        <div class="flex items-center space-x-6">
+            <a href="#contact" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">
+                Contact
+            </a>
+            <a href="/admin/login" class="text-blue-600 hover:text-blue-800 font-semibold border border-blue-600 px-4 py-2 rounded transition duration-300">
+                Connexion
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Espace pour l'en-tête fixe -->
+<div class="h-20"></div>
+
+<!-- Section Évasion avec photo et animation -->
+<section class="relative h-[70vh] overflow-hidden">
+    <img src="/photo-agence voyage woud.jpg" alt="Agence de voyage Woud" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+        <h2 class="text-white text-6xl md:text-8xl font-caveat font-bold text-center">
+            <span class="letter-animation" style="animation-delay: 0s;">É</span>
+            <span class="letter-animation" style="animation-delay: 0.3s;">v</span>
+            <span class="letter-animation" style="animation-delay: 0.6s;">a</span>
+            <span class="letter-animation" style="animation-delay: 0.9s;">d</span>
+            <span class="letter-animation" style="animation-delay: 1.2s;">e</span>
+            <span class="letter-animation" style="animation-delay: 1.5s;">z</span>
+            <span class="letter-animation" style="animation-delay: 1.8s;">-</span>
+            <span class="letter-animation" style="animation-delay: 2.1s;">v</span>
+            <span class="letter-animation" style="animation-delay: 2.4s;">o</span>
+            <span class="letter-animation" style="animation-delay: 2.7s;">u</span>
+            <span class="letter-animation" style="animation-delay: 3.0s;">s</span>
+        </h2>
+    </div>
+</section>
+
+<!-- Section Destinations -->
+<section id="destinations" class="container mx-auto px-4 py-16">
+    <h2 class="text-4xl font-signika-negative text-center mb-12 fade-in-section">Nos Destinations</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Bali -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('bali-section').scrollIntoView({behavior: 'smooth'})">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4" alt="Bali" class="w-full h-64 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 class="text-white text-2xl font-bold">Bali</h3>
+            </div>
+        </div>
+
+        <!-- Maldives -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('maldives-section').scrollIntoView({behavior: 'smooth'})">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206" alt="Maldives" class="w-full h-64 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 class="text-white text-2xl font-bold">Maldives</h3>
+            </div>
+        </div>
+
+        <!-- Groenland -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('groenland-section').scrollIntoView({behavior: 'smooth'})">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4" alt="Groenland" class="w-full h-64 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 class="text-white text-2xl font-bold">Groenland</h3>
+            </div>
+        </div>
+
+        <!-- Alaska -->
+        <div class="relative group cursor-pointer" onclick="document.getElementById('alaska-section').scrollIntoView({behavior: 'smooth'})">
+            <img src="/miniature alaska.jpg" alt="Alaska" class="w-full h-64 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 class="text-white text-2xl font-bold">Alaska</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section détaillée des destinations -->
+<section class="container mx-auto px-4 py-16">
+    <h2 class="text-4xl font-signika-negative text-center mb-12 fade-in-section">Nos Destinations en Détail</h2>
+    
+    <!-- Bali -->
+    <div id="bali-section" class="mb-20">
+        <h3 class="text-3xl font-signika-negative mb-8 animate-fade-in-delayed">Bali, Indonésie</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Hôtel 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/bali-resort'">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4" alt="Hôtel Bali" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Bali Resort & Spa</h4>
+                    <p class="text-gray-600 mb-4">Un hôtel de luxe avec vue sur l'océan, spa traditionnel et piscine à débordement.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Temple de Tanah Lot</li>
+                            <li>Rizières de Tegalalang</li>
+                            <li>Plage de Nusa Dua</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 1.200€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Bali Resort & Spa')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/ubud-jungle'">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" alt="Hôtel Bali" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Ubud Jungle Retreat</h4>
+                    <p class="text-gray-600 mb-4">Villas privatives dans la jungle avec piscine privée et vue panoramique.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Forêt des singes</li>
+                            <li>Palais d'Ubud</li>
+                            <li>Marché traditionnel</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 950€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Ubud Jungle Retreat')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/seminyak-beach'">
+                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9" alt="Hôtel Bali" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Seminyak Beach Hotel</h4>
+                    <p class="text-gray-600 mb-4">Hôtel moderne face à la plage avec restaurants gastronomiques.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Plage de Seminyak</li>
+                            <li>Boutiques de luxe</li>
+                            <li>Restaurants branchés</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 1.100€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Seminyak Beach Hotel')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maldives -->
+    <div id="maldives-section" class="mb-20">
+        <h3 class="text-3xl font-signika-negative mb-8 animate-fade-in-delayed">Maldives</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Hôtel 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/maldives-luxury'">
+                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9" alt="Hôtel Maldives" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Maldives Luxury Resort</h4>
+                    <p class="text-gray-600 mb-4">Villas sur pilotis avec accès direct à l'océan et spa sous-marin.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Récif corallien</li>
+                            <li>Plage de sable blanc</li>
+                            <li>Centre de plongée</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 2.500€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Maldives Luxury Resort')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/island-spa'">
+                <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206" alt="Hôtel Maldives" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Island Spa Resort</h4>
+                    <p class="text-gray-600 mb-4">Complexe de luxe avec spa marin et restaurants sous-marins.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Lagons turquoise</li>
+                            <li>Excursions en bateau</li>
+                            <li>Restaurants gastronomiques</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 2.800€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Island Spa Resort')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/coral-paradise'">
+                <img src="/lily beach maldives.jpg" alt="Hôtel Maldives" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Lily Beach Resort & Spa</h4>
+                    <p class="text-gray-600 mb-4">Villas sur pilotis avec plancher en verre pour observer les fonds marins.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Snorkeling</li>
+                            <li>Massages traditionnels</li>
+                            <li>Excursions en hydravion</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 2.200€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Lily Beach Resort & Spa')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Groenland -->
+    <div id="groenland-section" class="mb-20">
+        <h3 class="text-3xl font-signika-negative mb-8 animate-fade-in-delayed">Groenland</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Hôtel 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/ilulissat-ice'">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4" alt="Hôtel Groenland" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Ilulissat Ice Hotel</h4>
+                    <p class="text-gray-600 mb-4">Hôtel de glace unique avec vue sur les icebergs et les aurores boréales.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Fjord glacé d'Ilulissat</li>
+                            <li>Croisière entre les icebergs</li>
+                            <li>Observation des baleines</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 2.200€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Ilulissat Ice Hotel')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/nuuk-aurora'">
+                <img src="/Nuuk Aurora Resort.jpg" alt="Hôtel Groenland" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Nuuk Aurora Resort</h4>
+                    <p class="text-gray-600 mb-4">Complexe moderne avec dômes transparents pour observer les aurores boréales.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Capitale Nuuk</li>
+                            <li>Musée national</li>
+                            <li>Excursions en traîneau</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 1.900€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Nuuk Aurora Resort')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/hans-egede'">
+                <img src="/groenland hotel hans edge.jpg" alt="Hôtel Hans Egede" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Hôtel Hans Egede</h4>
+                    <p class="text-gray-600 mb-4">Hôtel de luxe au cœur de Nuuk avec vue imprenable sur le fjord et les montagnes environnantes.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Centre-ville de Nuuk</li>
+                            <li>Musée national du Groenland</li>
+                            <li>Excursions en bateau</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 1.800€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Hôtel Hans Egede')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Alaska -->
+    <div id="alaska-section" class="mb-20">
+        <h3 class="text-3xl font-signika-negative mb-8 animate-fade-in-delayed">Alaska, États-Unis</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Hôtel 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/denali-lodge'">
+                <img src="/DPL_Lodge alaska.jpg" alt="Hôtel Alaska" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Denali Wilderness Lodge</h4>
+                    <p class="text-gray-600 mb-4">Lodge de luxe au cœur du parc national Denali avec vue sur la plus haute montagne d'Amérique du Nord.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Mont Denali (6.190m)</li>
+                            <li>Observation des grizzlys</li>
+                            <li>Randonnées dans la toundra</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 2.800€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Denali Wilderness Lodge')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hôtel 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/glacier-view'">
+                <img src="/alaska glacier view inn 1.jpg" alt="Hôtel Alaska" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Glacier View Lodge</h4>
+                    <p class="text-gray-600 mb-4">Auberge confortable avec vue imprenable sur les glaciers et la faune.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Parc national de Kenai Fjords</li>
+                            <li>Observation des ours</li>
+                            <li>Kayak sur glacier</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 1.400€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Glacier View Lodge')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+             <!-- Bettles Lodge, déplacé depuis Groenland -->
+             <div class="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300" onclick="window.location.href='/hotels/bettles-lodge'">
+                <img src="/bettles lodge alaska.jpg" alt="Bettles Lodge en Alaska" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h4 class="text-xl font-signika-negative font-bold mb-2">Bettles Lodge</h4>
+                    <p class="text-gray-600 mb-4">Lodge historique au cœur de l'Alaska, idéal pour les aurores boréales.</p>
+                    <div class="mb-4">
+                        <h5 class="font-signika-negative font-bold mb-2">Points d'intérêt à proximité :</h5>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Parc national Gates of the Arctic</li>
+                            <li>Expéditions en traîneau à chiens</li>
+                            <li>Observation de la faune sauvage</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-lg font-bold text-blue-600 whitespace-nowrap">À partir de 1.850€ / semaine</p>
+                        <button onclick="event.stopPropagation(); openReservationModal('Bettles Lodge')" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Réserver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulaire de contact -->
+<section id="contact" class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-4xl font-['Playfair_Display'] text-center mb-12">Contactez-nous</h2>
+            <form id="contactForm" class="space-y-4 bg-white p-8 rounded-lg shadow-lg">
+                <div>
+                    <label class="block text-gray-700 mb-2">Nom complet *</label>
+                    <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Email *</label>
+                    <input type="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Téléphone</label>
+                    <input type="tel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Sujet *</label>
+                    <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                        <option value="">Choisissez un sujet</option>
+                        <option value="reservation">Réservation</option>
+                        <option value="information">Demande d'information</option>
+                        <option value="devis">Devis personnalisé</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Message *</label>
+                    <textarea required rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" placeholder="Décrivez votre projet de voyage..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Envoyer le message
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Gérer la soumission du formulaire de contact
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Message envoyé ! Nous vous répondrons dans les plus brefs délais.');
+        this.reset();
+    });
+</script>
+
+<!-- Mention site vitrine -->
+<div class="bg-gray-100 py-4 mt-8">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-600">
+            ⚠️ Ce site est un site vitrine. Les prix, hôtels et informations présentés sont fictifs et à des fins de démonstration uniquement.
+        </p>
+    </div>
+</div> 

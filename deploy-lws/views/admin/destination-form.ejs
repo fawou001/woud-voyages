@@ -1,0 +1,92 @@
+<h2 class="text-2xl font-bold text-gray-800 mb-6">
+    <%= isNew ? 'Ajouter une nouvelle destination' : 'Modifier la destination' %>
+</h2>
+<a href="/admin/destinations" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200 mb-6 inline-block">
+    <i class="fas fa-arrow-left mr-2"></i>Retour à la liste
+</a>
+<% if (locals.error) { %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+        <%= error %>
+    </div>
+<% } %>
+<form method="POST" action="<%= isNew ? '/admin/destinations' : `/admin/destinations/${destination.id}` %>" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-md space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom de la destination *</label>
+            <input type="text" id="name" name="name" value="<%= destination ? destination.name : '' %>" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Bali Tropical Resort">
+        </div>
+        <div>
+            <label for="location" class="block text-sm font-medium text-gray-700 mb-2">Localisation *</label>
+            <input type="text" id="location" name="location" value="<%= destination ? destination.location : '' %>" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: Bali, Indonésie">
+        </div>
+        <div>
+            <label for="price" class="block text-sm font-medium text-gray-700 mb-2">Prix par nuit (€) *</label>
+            <input type="number" id="price" name="price" value="<%= destination ? destination.price : '' %>" required min="0" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: 180">
+        </div>
+        <div>
+            <label for="currency" class="block text-sm font-medium text-gray-700 mb-2">Devise *</label>
+            <select id="currency" name="currency" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="EUR" <%= destination && destination.currency === 'EUR' ? 'selected' : '' %>>EUR (€)</option>
+                <option value="USD" <%= destination && destination.currency === 'USD' ? 'selected' : '' %>>USD ($)</option>
+                <option value="GBP" <%= destination && destination.currency === 'GBP' ? 'selected' : '' %>>GBP (£)</option>
+            </select>
+        </div>
+        <div>
+            <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Catégorie *</label>
+            <select id="category" name="category" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="nature" <%= destination && destination.category === 'nature' ? 'selected' : '' %>>Nature</option>
+                <option value="luxe" <%= destination && destination.category === 'luxe' ? 'selected' : '' %>>Luxe</option>
+                <option value="aventure" <%= destination && destination.category === 'aventure' ? 'selected' : '' %>>Aventure</option>
+                <option value="plage" <%= destination && destination.category === 'plage' ? 'selected' : '' %>>Plage</option>
+            </select>
+        </div>
+        <div>
+            <label for="rating" class="block text-sm font-medium text-gray-700 mb-2">Note (sur 5) *</label>
+            <input type="number" id="rating" name="rating" value="<%= destination ? destination.rating : '4.5' %>" required min="0" max="5" step="0.1" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: 4.5">
+        </div>
+    </div>
+    <div>
+        <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Description détaillée *</label>
+        <textarea id="description" name="description" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Décrivez la destination, ses atouts, l'expérience proposée..."><%= destination ? destination.description : '' %></textarea>
+    </div>
+    <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Fonctionnalités disponibles</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-center">
+                <input type="checkbox" id="feature1" name="features" value="Piscine" <%= destination && destination.features && destination.features.includes('Piscine') ? 'checked' : '' %> class="mr-2">
+                <label for="feature1">Piscine</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="feature2" name="features" value="Spa" <%= destination && destination.features && destination.features.includes('Spa') ? 'checked' : '' %> class="mr-2">
+                <label for="feature2">Spa</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="feature3" name="features" value="Restaurant" <%= destination && destination.features && destination.features.includes('Restaurant') ? 'checked' : '' %> class="mr-2">
+                <label for="feature3">Restaurant</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="feature4" name="features" value="Vue mer" <%= destination && destination.features && destination.features.includes('Vue mer') ? 'checked' : '' %> class="mr-2">
+                <label for="feature4">Vue mer</label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="images" class="block text-sm font-medium text-gray-700 mb-2">Images</label>
+        <input type="file" id="images" name="images" accept="image/*" multiple class="w-full">
+        <% if (destination && destination.images && destination.images.length > 0) { %>
+            <div class="mt-2 flex flex-wrap gap-2">
+                <% destination.images.forEach(function(img) { %>
+                    <img src="<%= img %>" alt="Image" class="h-16 rounded shadow">
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+    <div>
+        <label for="available" class="block text-sm font-medium text-gray-700 mb-2">Disponible</label>
+        <select id="available" name="available" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="true" <%= destination && destination.available === true ? 'selected' : '' %>>Oui</option>
+            <option value="false" <%= destination && destination.available === false ? 'selected' : '' %>>Non</option>
+        </select>
+    </div>
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition">Valider</button>
+</form> 

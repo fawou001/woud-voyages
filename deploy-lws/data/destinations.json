@@ -1,0 +1,452 @@
+{
+  "destinations": [
+    {
+      "id": "glacier-view",
+      "name": "Alaska Glacier View Inn",
+      "location": "Alaska, États-Unis",
+      "price": 280,
+      "currency": "EUR",
+      "description": "Un hôtel de charme niché au cœur de l'Alaska, offrant une vue imprenable sur les glaciers majestueux. Idéal pour les amoureux de la nature et les aventuriers.",
+      "features": [
+        "Vue panoramique sur les glaciers",
+        "Restaurant gastronomique",
+        "Spa et bien-être",
+        "Activités de plein air",
+        "Chambres confortables"
+      ],
+      "images": [
+        "/alaska glacier view inn 1.jpg",
+        "/alaska glacier view inn 2.jpg",
+        "/alaska glacier view inn 3.jpg"
+      ],
+      "mainImage": "/alaska glacier view inn 1.jpg",
+      "category": "nature",
+      "rating": 4.8,
+      "available": true
+    },
+    {
+      "id": "arctic-light",
+      "name": "Arctic Light Hotel",
+      "location": "Rovaniemi, Finlande",
+      "price": 320,
+      "currency": "EUR",
+      "description": "Découvrez la magie du cercle polaire arctique dans cet hôtel unique. Parfait pour observer les aurores boréales et vivre une expérience nordique authentique.",
+      "features": [
+        "Observation des aurores boréales",
+        "Chambres avec vue arctique",
+        "Restaurant local",
+        "Activités hivernales",
+        "Spa nordique"
+      ],
+      "images": [
+        "/arctic light 1.jpg",
+        "/arctic light 2.jpg",
+        "/arctic light 3.jpg"
+      ],
+      "mainImage": "/arctic light 1.jpg",
+      "category": "nature",
+      "rating": 4.9,
+      "available": true
+    },
+    {
+      "id": "bali-resort",
+      "name": "Bali Tropical Resort",
+      "location": "Bali, Indonésie",
+      "price": 180,
+      "currency": "EUR",
+      "description": "Un paradis tropical au cœur de Bali. Cet hôtel de luxe vous offre une expérience authentique avec ses jardins tropicaux et ses plages privées.",
+      "features": [
+        "Plage privée",
+        "Piscine à débordement",
+        "Spa balinais",
+        "Restaurant traditionnel",
+        "Villas privées"
+      ],
+      "images": [
+        "/bali resort 1.jpg",
+        "/bali resort 2.jpg",
+        "/bali resort 3.jpg"
+      ],
+      "mainImage": "/bali resort 1.jpg",
+      "category": "luxe",
+      "rating": 4.7,
+      "available": true
+    },
+    {
+      "id": "bergen-heritage",
+      "name": "Bergen Heritage Hotel",
+      "location": "Bergen, Norvège",
+      "price": 250,
+      "currency": "EUR",
+      "description": "Hôtel historique au cœur de Bergen, capitale culturelle de la Norvège. Découvrez l'architecture traditionnelle et la gastronomie locale.",
+      "features": [
+        "Architecture historique",
+        "Restaurant gastronomique",
+        "Vue sur le port",
+        "Centre-ville accessible",
+        "Chambres authentiques"
+      ],
+      "images": [
+        "/bergen heritage 1.jpg",
+        "/bergen heritage 2.jpg",
+        "/bergen heritage 3.jpg"
+      ],
+      "mainImage": "/bergen heritage 1.jpg",
+      "category": "nature",
+      "rating": 4.6,
+      "available": true
+    },
+    {
+      "id": "maldives-luxury",
+      "name": "Maldives Luxury Resort",
+      "location": "Maldives",
+      "price": 450,
+      "currency": "EUR",
+      "description": "Villas sur pilotis avec accès direct à l'océan. Un paradis pour les amoureux de la plongée et du farniente.",
+      "features": [
+        "Villas sur pilotis",
+        "Plongée sous-marine",
+        "Spa sous-marin",
+        "Restaurant gastronomique",
+        "Plage privée"
+      ],
+      "images": [
+        "/maldives luxury 1.jpg",
+        "/maldives luxury 2.jpg",
+        "/maldives luxury 3.jpg"
+      ],
+      "mainImage": "/maldives luxury 1.jpg",
+      "category": "luxe",
+      "rating": 4.9,
+      "available": true
+    },
+    {
+      "id": "anchorage-aurora",
+      "name": "Anchorage Aurora Lodge",
+      "location": "Anchorage, Alaska",
+      "price": 220,
+      "currency": "EUR",
+      "description": "Lodge confortable pour observer les aurores boréales. Idéal pour les photographes et les amoureux de la nature.",
+      "features": [
+        "Observation aurores boréales",
+        "Photographie nature",
+        "Randonnées guidées",
+        "Restaurant local",
+        "Chambres chaleureuses"
+      ],
+      "images": [
+        "/anchorage aurora 1.jpg",
+        "/anchorage aurora 2.jpg",
+        "/anchorage aurora 3.jpg"
+      ],
+      "mainImage": "/anchorage aurora 1.jpg",
+      "category": "nature",
+      "rating": 4.5,
+      "available": true
+    },
+    {
+      "id": "juneau-wilderness",
+      "name": "Juneau Wilderness Resort",
+      "location": "Juneau, Alaska",
+      "price": 190,
+      "currency": "EUR",
+      "description": "Resort en pleine nature pour découvrir la faune sauvage de l'Alaska. Excursions en bateau et observation des baleines.",
+      "features": [
+        "Observation des baleines",
+        "Excursions en bateau",
+        "Randonnées sauvages",
+        "Restaurant de poisson",
+        "Chalets en bois"
+      ],
+      "images": [
+        "/juneau wilderness 1.jpg",
+        "/juneau wilderness 2.jpg",
+        "/juneau wilderness 3.jpg"
+      ],
+      "mainImage": "/juneau wilderness 1.jpg",
+      "category": "aventure",
+      "rating": 4.4,
+      "available": true
+    },
+    {
+      "id": "denali-lodge",
+      "name": "Denali Lodge & Spa",
+      "location": "Denali, Alaska",
+      "price": 350,
+      "currency": "EUR",
+      "description": "Lodge de luxe avec vue sur le Mont Denali. Spa nordique et activités de plein air pour tous les niveaux.",
+      "features": [
+        "Vue sur le Mont Denali",
+        "Spa nordique",
+        "Activités plein air",
+        "Restaurant gastronomique",
+        "Suites de luxe"
+      ],
+      "images": [
+        "/denali lodge 1.jpg",
+        "/denali lodge 2.jpg",
+        "/denali lodge 3.jpg"
+      ],
+      "mainImage": "/denali lodge 1.jpg",
+      "category": "luxe",
+      "rating": 4.8,
+      "available": true
+    },
+    {
+      "id": "nuuk-aurora",
+      "name": "Nuuk Aurora Hotel",
+      "location": "Nuuk, Groenland",
+      "price": 280,
+      "currency": "EUR",
+      "description": "Hôtel moderne dans la capitale du Groenland. Parfait pour découvrir la culture inuit et les aurores boréales.",
+      "features": [
+        "Culture inuit",
+        "Aurores boréales",
+        "Restaurant local",
+        "Centre-ville",
+        "Chambres modernes"
+      ],
+      "images": [
+        "/nuuk aurora 1.jpg",
+        "/nuuk aurora 2.jpg",
+        "/nuuk aurora 3.jpg"
+      ],
+      "mainImage": "/nuuk aurora 1.jpg",
+      "category": "nature",
+      "rating": 4.3,
+      "available": true
+    },
+    {
+      "id": "bettles-lodge",
+      "name": "Bettles Lodge",
+      "location": "Bettles, Alaska",
+      "price": 160,
+      "currency": "EUR",
+      "description": "Lodge authentique au cœur de l'Alaska sauvage. Expérience unique pour les aventuriers en quête d'authenticité.",
+      "features": [
+        "Alaska sauvage",
+        "Aventures authentiques",
+        "Cuisine locale",
+        "Chalets rustiques",
+        "Activités traditionnelles"
+      ],
+      "images": [
+        "/bettles lodge 1.jpg",
+        "/bettles lodge 2.jpg",
+        "/bettles lodge 3.jpg"
+      ],
+      "mainImage": "/bettles lodge 1.jpg",
+      "category": "aventure",
+      "rating": 4.2,
+      "available": true
+    },
+    {
+      "id": "coral-paradise",
+      "name": "Coral Paradise Resort",
+      "location": "Maldives",
+      "price": 380,
+      "currency": "EUR",
+      "description": "Resort avec récifs coralliens exceptionnels. Parfait pour la plongée et l'observation marine.",
+      "features": [
+        "Récifs coralliens",
+        "Plongée guidée",
+        "Villas sur l'eau",
+        "Restaurant marin",
+        "Centre de plongée"
+      ],
+      "images": [
+        "/coral paradise 1.jpg",
+        "/coral paradise 2.jpg",
+        "/coral paradise 3.jpg"
+      ],
+      "mainImage": "/coral paradise 1.jpg",
+      "category": "plage",
+      "rating": 4.7,
+      "available": true
+    },
+    {
+      "id": "hans-egede",
+      "name": "Hans Egede Hotel",
+      "location": "Nuuk, Groenland",
+      "price": 200,
+      "currency": "EUR",
+      "description": "Hôtel historique du Groenland avec vue sur le fjord. Découvrez l'histoire et la culture de cette région unique.",
+      "features": [
+        "Vue sur le fjord",
+        "Histoire groenlandaise",
+        "Restaurant traditionnel",
+        "Centre culturel",
+        "Chambres historiques"
+      ],
+      "images": [
+        "/hans egede 1.jpg",
+        "/hans egede 2.jpg",
+        "/hans egede 3.jpg"
+      ],
+      "mainImage": "/hans egede 1.jpg",
+      "category": "nature",
+      "rating": 4.1,
+      "available": true
+    },
+    {
+      "id": "ilulissat-ice",
+      "name": "Ilulissat Ice Hotel",
+      "location": "Ilulissat, Groenland",
+      "price": 320,
+      "currency": "EUR",
+      "description": "Hôtel unique avec vue sur les icebergs d'Ilulissat. Expérience inoubliable au pays des glaces.",
+      "features": [
+        "Vue sur les icebergs",
+        "Excursions en bateau",
+        "Restaurant local",
+        "Chambres avec vue",
+        "Activités hivernales"
+      ],
+      "images": [
+        "/ilulissat ice 1.jpg",
+        "/ilulissat ice 2.jpg",
+        "/ilulissat ice 3.jpg"
+      ],
+      "mainImage": "/ilulissat ice 1.jpg",
+      "category": "nature",
+      "rating": 4.6,
+      "available": true
+    },
+    {
+      "id": "ubud-jungle",
+      "name": "Ubud Jungle Retreat",
+      "location": "Ubud, Bali",
+      "price": 150,
+      "currency": "EUR",
+      "description": "Retraite dans la jungle d'Ubud. Villas privées avec piscine et vue sur la forêt tropicale.",
+      "features": [
+        "Jungle tropicale",
+        "Villas privées",
+        "Piscine naturelle",
+        "Spa balinais",
+        "Vue sur la forêt"
+      ],
+      "images": [
+        "/ubud jungle 1.jpg",
+        "/ubud jungle 2.jpg",
+        "/ubud jungle 3.jpg"
+      ],
+      "mainImage": "/ubud jungle 1.jpg",
+      "category": "nature",
+      "rating": 4.5,
+      "available": true
+    },
+    {
+      "id": "usud-jungle",
+      "name": "Ubud Jungle Lodge",
+      "location": "Ubud, Bali",
+      "price": 120,
+      "currency": "EUR",
+      "description": "Lodge authentique dans la jungle d'Ubud. Expérience nature et culture balinaise.",
+      "features": [
+        "Jungle authentique",
+        "Culture balinaise",
+        "Cuisine locale",
+        "Bungalows traditionnels",
+        "Activités culturelles"
+      ],
+      "images": [
+        "/usud jungle 1.jpg",
+        "/usud jungle 2.jpg",
+        "/usud jungle 3.jpg"
+      ],
+      "mainImage": "/usud jungle 1.jpg",
+      "category": "nature",
+      "rating": 4.3,
+      "available": true
+    },
+    {
+      "id": "island-spa",
+      "name": "Island Spa Resort",
+      "location": "Maldives",
+      "price": 420,
+      "currency": "EUR",
+      "description": "Resort de luxe avec spa marin. Détente absolue dans un cadre paradisiaque.",
+      "features": [
+        "Spa marin",
+        "Villas de luxe",
+        "Restaurant sous-marin",
+        "Plage privée",
+        "Soins thalasso"
+      ],
+      "images": [
+        "/island spa 1.jpg",
+        "/island spa 2.jpg",
+        "/island spa 3.jpg"
+      ],
+      "mainImage": "/island spa 1.jpg",
+      "category": "luxe",
+      "rating": 4.8,
+      "available": true
+    },
+    {
+      "id": "seminyak-beach",
+      "name": "Seminyak Beach Hotel",
+      "location": "Seminyak, Bali",
+      "price": 200,
+      "currency": "EUR",
+      "description": "Hôtel moderne face à la plage de Seminyak. Restaurants gastronomiques et boutiques de luxe à proximité.",
+      "features": [
+        "Plage de Seminyak",
+        "Restaurants gastronomiques",
+        "Boutiques de luxe",
+        "Piscine à débordement",
+        "Chambres modernes"
+      ],
+      "images": [
+        "/seminyak beach 1.jpg",
+        "/seminyak beach 2.jpg",
+        "/seminyak beach 3.jpg"
+      ],
+      "mainImage": "/seminyak beach 1.jpg",
+      "category": "plage",
+      "rating": 4.4,
+      "available": true
+    },
+    {
+      "id": "fjord-panorama",
+      "name": "Fjord Panorama Hotel",
+      "location": "Geiranger, Norvège",
+      "price": 280,
+      "currency": "EUR",
+      "description": "Hôtel avec vue panoramique sur les fjords norvégiens. Patrimoine mondial de l'UNESCO.",
+      "features": [
+        "Vue panoramique fjords",
+        "Patrimoine UNESCO",
+        "Restaurant local",
+        "Excursions en bateau",
+        "Chambres avec vue"
+      ],
+      "images": [
+        "/fjord panorama 1.jpg",
+        "/fjord panorama 2.jpg",
+        "/fjord panorama 3.jpg"
+      ],
+      "mainImage": "/fjord panorama 1.jpg",
+      "category": "nature",
+      "rating": 4.7,
+      "available": true
+    },
+    {
+      "id": "test",
+      "name": "Test",
+      "location": "Te ",
+      "price": 890,
+      "currency": "EUR",
+      "description": "Hkjj",
+      "features": [
+        "Vue panoramique"
+      ],
+      "images": [],
+      "mainImage": "",
+      "category": "nature",
+      "rating": 4.5,
+      "available": true
+    }
+  ]
+}

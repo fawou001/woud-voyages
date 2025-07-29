@@ -1,0 +1,249 @@
+<!-- En-tête du tableau de bord -->
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">Tableau de bord</h1>
+    <p class="text-gray-600">Bienvenue, <%= user ? user.username : '' %> ! Voici un aperçu de l'activité récente.</p>
+</div>
+
+<!-- Statistiques générales -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                <i class="fas fa-eye text-2xl"></i>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-800">Vues totales</h3>
+                <p class="text-2xl font-bold text-blue-600"><%= analytics.globalViews %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-green-100 text-green-600">
+                <i class="fas fa-map-marker-alt text-2xl"></i>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-800">Destinations</h3>
+                <p class="text-2xl font-bold text-green-600"><%= destinations ? destinations.length : 0 %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                <i class="fas fa-users text-2xl"></i>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-800">Utilisateurs</h3>
+                <p class="text-2xl font-bold text-purple-600"><%= userStats ? userStats.total : 0 %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                <i class="fas fa-history text-2xl"></i>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-800">Changements</h3>
+                <p class="text-2xl font-bold text-orange-600"><%= changeStats ? changeStats.total : 0 %></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Derniers changements et gestion des utilisateurs -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Derniers changements -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-gray-800">Derniers changements</h2>
+            <a href="/admin/changelog" class="text-blue-600 hover:text-blue-800 text-sm">Voir tout</a>
+        </div>
+        
+        <% if (recentChanges && recentChanges.length > 0) { %>
+            <div class="space-y-4">
+                <% recentChanges.forEach(change => { %>
+                    <div class="border-l-4 border-blue-500 pl-4 py-2">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-800"><%= change.description %></p>
+                                <p class="text-sm text-gray-600">
+                                    <i class="fas fa-user mr-1"></i><%= change.user %> • 
+                                    <i class="fas fa-clock mr-1"></i><%= new Date(change.timestamp).toLocaleString('fr-FR') %>
+                                </p>
+                            </div>
+                            <span class="px-2 py-1 text-xs rounded-full 
+                                <%= change.type === 'destination' ? 'bg-green-100 text-green-800' : '' %>
+                                <%= change.type === 'user' ? 'bg-purple-100 text-purple-800' : '' %>
+                                <%= change.type === 'content' ? 'bg-blue-100 text-blue-800' : '' %>">
+                                <%= change.type %>
+                            </span>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class="text-gray-500 text-center py-4">Aucun changement récent</p>
+        <% } %>
+    </div>
+
+    <!-- Gestion des utilisateurs -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-gray-800">Gestion des utilisateurs</h2>
+            <% if (typeof userRole !== 'undefined' && userRole === 'admin') { %>
+            <button onclick="openUserModal()" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                <i class="fas fa-plus mr-2"></i>Nouvel utilisateur
+            </button>
+            <% } %>
+        </div>
+        
+        <% if (users && users.length > 0) { %>
+            <div class="space-y-3">
+                <% users.slice(0, 5).forEach(user => { %>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <p class="font-semibold text-gray-800"><%= user.username %></p>
+                            <p class="text-sm text-gray-600"><%= user.email %></p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2 py-1 text-xs rounded-full 
+                                <%= user.role === 'admin' ? 'bg-red-100 text-red-800' : '' %>
+                                <%= user.role === 'moderator' ? 'bg-purple-100 text-purple-800' : '' %>
+                                <%= user.role === 'editor' ? 'bg-blue-100 text-blue-800' : '' %>
+                                <%= user.role === 'viewer' ? 'bg-gray-100 text-gray-800' : '' %>">
+                                <%= user.role %>
+                            </span>
+                            <span class="px-2 py-1 text-xs rounded-full <%= user.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %>">
+                                <%= user.isActive ? 'Actif' : 'Inactif' %>
+                            </span>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+            <% if (users.length > 5) { %>
+                <div class="mt-4 text-center">
+                    <a href="/admin/users" class="text-blue-600 hover:text-blue-800 text-sm">Voir tous les utilisateurs (<%= users.length %>)</a>
+                </div>
+            <% } %>
+        <% } else { %>
+            <p class="text-gray-500 text-center py-4">Aucun utilisateur trouvé</p>
+        <% } %>
+    </div>
+</div>
+
+<!-- Actions rapides -->
+<div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Actions rapides</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="/admin/destinations/new" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-200">
+            <i class="fas fa-plus text-blue-600 mr-3 text-xl"></i>
+            <div>
+                <p class="font-semibold text-gray-800">Nouvelle destination</p>
+                <p class="text-sm text-gray-600">Ajouter un hôtel</p>
+            </div>
+        </a>
+        
+        <a href="/admin/statistics" class="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition duration-200">
+            <i class="fas fa-chart-bar text-green-600 mr-3 text-xl"></i>
+            <div>
+                <p class="font-semibold text-gray-800">Statistiques</p>
+                <p class="text-sm text-gray-600">Voir les données</p>
+            </div>
+        </a>
+        
+        <% if (typeof userRole !== 'undefined' && userRole === 'admin') { %>
+        <a href="/admin/users" class="flex items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition duration-200">
+            <i class="fas fa-users text-purple-600 mr-3 text-xl"></i>
+            <div>
+                <p class="font-semibold text-gray-800">Utilisateurs</p>
+                <p class="text-sm text-gray-600">Gérer les accès</p>
+            </div>
+        </a>
+        <% } %>
+    </div>
+</div>
+
+<!-- Modal pour créer un nouvel utilisateur -->
+<div id="userModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4">
+        <h3 class="text-2xl font-bold mb-6">Créer un nouvel utilisateur</h3>
+        <form id="userForm" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 mb-2">Nom d'utilisateur *</label>
+                <input type="text" name="username" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2">Email *</label>
+                <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2">Mot de passe *</label>
+                <input type="password" name="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 mb-2">Rôle *</label>
+                <select name="role" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    <option value="">Choisir un rôle</option>
+                    <option value="admin">Administrateur</option>
+                    <option value="moderator">Modérateur</option>
+                    <option value="editor">Éditeur</option>
+                    <option value="viewer">Lecteur</option>
+                </select>
+            </div>
+            <div class="flex justify-end space-x-4">
+                <button type="button" onclick="closeUserModal()" class="px-4 py-2 text-gray-600 hover:text-gray-800">Annuler</button>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Créer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openUserModal() {
+        document.getElementById('userModal').classList.remove('hidden');
+        document.getElementById('userModal').classList.add('flex');
+    }
+
+    function closeUserModal() {
+        document.getElementById('userModal').classList.add('hidden');
+        document.getElementById('userModal').classList.remove('flex');
+    }
+
+    document.getElementById('userForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const userData = {
+            username: formData.get('username'),
+            email: formData.get('email'),
+            password: formData.get('password'),
+            role: formData.get('role')
+        };
+
+        try {
+            const response = await fetch('/admin/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData)
+            });
+
+            if (response.ok) {
+                alert('Utilisateur créé avec succès !');
+                closeUserModal();
+                location.reload();
+            } else {
+                const error = await response.json();
+                alert('Erreur : ' + error.message);
+            }
+        } catch (error) {
+            alert('Erreur lors de la création de l\'utilisateur');
+        }
+    });
+</script> 
