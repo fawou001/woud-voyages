@@ -57,6 +57,62 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
+// Route pour la connexion simplifiée
+router.get('/simple-login', (req, res) => {
+    res.render('admin/simple-login');
+});
+
+// Route d'authentification directe (bypass des sessions)
+router.get('/auth/:username/:password', async (req, res) => {
+    const { username, password } = req.params;
+    
+    console.log('🔐 Authentification directe pour:', username);
+    
+    try {
+        const user = await authenticateUser(username, password);
+        
+        if (user) {
+            console.log('✅ Authentification réussie pour:', username);
+            
+            // Créer un token JWT
+            const token = createJWTToken(user);
+            
+            // Définir le cookie JWT
+            res.cookie('authToken', token, {
+                httpOnly: true,
+                secure: false,
+                maxAge: 24 * 60 * 60 * 1000,
+                sameSite: 'lax'
+            });
+            
+            // Rediriger vers le dashboard
+            res.redirect('/admin');
+        } else {
+            console.log('❌ Authentification échouée pour:', username);
+            res.send(`
+                <html>
+                    <body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+                        <h1 style="color: red;">❌ Authentification échouée</h1>
+                        <p>Nom d'utilisateur ou mot de passe incorrect.</p>
+                        <a href="/admin/login" style="color: blue;">← Retour à la connexion</a>
+                    </body>
+                </html>
+            `);
+        }
+    } catch (error) {
+        console.error('❌ Erreur d\'authentification:', error);
+        res.send(`
+            <html>
+                <body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+                    <h1 style="color: red;">❌ Erreur serveur</h1>
+                    <p>Une erreur est survenue lors de l'authentification.</p>
+                    <a href="/admin/login" style="color: blue;">← Retour à la connexion</a>
+                </body>
+            </html>
+        `);
+    }
+});
+
 // Route de test de connexion simple
 router.get('/test-connection', (req, res) => {
     res.json({

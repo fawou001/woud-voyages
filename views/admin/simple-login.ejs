@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Simple - Woud Voyages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-gray-800">Connexion Simple</h1>
+            <p class="text-gray-600">Accès direct au panneau d'administration</p>
+        </div>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nom d'utilisateur</label>
+                <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Votre nom d'utilisateur">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
+                <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md" placeholder="Votre mot de passe">
+            </div>
+            <button onclick="login()" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                Se connecter
+            </button>
+        </div>
+
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-600 mb-2">Utilisateurs disponibles :</p>
+            <div class="text-xs text-gray-500 space-y-1">
+                <div>• Administrateur / Administrateur123</div>
+                <div>• admin / admin123</div>
+                <div>• moderateur / moderateur123</div>
+                <div>• test / test123</div>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a href="/admin/login" class="text-blue-600 hover:text-blue-800 text-sm">
+                ← Connexion normale
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            // Rediriger vers la route d'authentification directe
+            window.location.href = `/admin/auth/${encodeURIComponent(username)}/${encodeURIComponent(password)}`;
+        }
+        
+        // Permettre la connexion avec Enter
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>
