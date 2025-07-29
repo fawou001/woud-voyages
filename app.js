@@ -4,8 +4,12 @@ const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 const adminRouter = require('./routes/admin');
 const { incrementGlobalViews, incrementDestinationViews } = require('./utils/analytics');
+const { createDefaultAdmin } = require('./utils/database');
 
 const app = express();
+
+// Initialiser l'utilisateur admin par défaut
+createDefaultAdmin().catch(console.error);
 
 // Définir EJS comme moteur de template
 app.set('view engine', 'ejs');

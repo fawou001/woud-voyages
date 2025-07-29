@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const bcrypt = require('bcryptjs');
 
 // Chemins des fichiers de données
 const DESTINATIONS_FILE = path.join(__dirname, '../data/destinations.json');
@@ -94,6 +95,33 @@ async function getUserByUsername(username) {
     }
 }
 
+// Fonction pour créer un utilisateur admin par défaut
+async function createDefaultAdmin() {
+    try {
+        const users = await getAllUsers();
+        if (users.length === 0) {
+            const hashedPassword = await bcrypt.hash('admin123', 10);
+            const defaultAdmin = {
+                id: 1,
+                username: 'admin',
+                password: hashedPassword,
+                email: 'admin@woud-voyages.com',
+                role: 'admin',
+                createdAt: new Date().toISOString(),
+                isActive: true
+            };
+            
+            await fs.writeFile(USERS_FILE, JSON.stringify({ users: [defaultAdmin] }, null, 2));
+            console.log('✅ Utilisateur admin par défaut créé');
+            return defaultAdmin;
+        }
+        return null;
+    } catch (error) {
+        console.error('Erreur lors de la création de l\'admin par défaut:', error);
+        return null;
+    }
+}
+
 module.exports = {
     getAllDestinations,
     getDestinationById,
@@ -102,5 +130,6 @@ module.exports = {
     updateDestination,
     deleteDestination,
     getAllUsers,
-    getUserByUsername
+    getUserByUsername,
+    createDefaultAdmin
 }; 

@@ -3,26 +3,27 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "$2b$10$O8sChIFXmFfsbjnMzalzHOwkyEVpI45bPiOmN/1IImKzpSGu.OOlO",
+      "password": "$2b$10$pW2PX2ezCcFQBpYoPU5u8ub3lDZ7z0eCI93PxwtMerMMqQCfyVTxq",
       "email": "admin@woud-voyages.com",
       "role": "admin",
-      "createdAt": "2024-01-01T00:00:00.000Z"
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "isActive": true
     },
     {
       "id": 2,
       "username": "test",
       "email": "test@gmail.com",
-      "password": "$2b$10$XFSrwgKCS4047wLpJyolt.cI2eM2Fp1doSqV04qkR//Ee7pOLPM.6",
+      "password": "$2b$10$coJMh5O4WYEWlVzrr.Hmnu8hpBbi4yyxCiJNJifWAZk.mF/2dTC4K",
       "role": "editor",
       "createdAt": "2025-07-09T04:31:38.183Z",
       "lastLogin": null,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": 3,
       "username": "moderateur",
       "email": "moderateur@woud-voyages.com",
-      "password": "$2b$10$XFSrwgKCS4047wLpJyolt.cI2eM2Fp1doSqV04qkR//Ee7pOLPM.6",
+      "password": "$2b$10$7zZLW6zRmuWPnmAMnXMwqudwaJsR9RZOiA6Dp4RVfMC0l4yvIveFm",
       "role": "moderator",
       "createdAt": "2025-01-15T00:00:00.000Z",
       "lastLogin": null,
