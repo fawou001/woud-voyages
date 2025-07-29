@@ -78,27 +78,71 @@ function requirePermission(permission) {
     };
 }
 
-// Fonction d'authentification
+// Fonction d'authentification avec fallback hardcodé
 async function authenticateUser(username, password) {
     try {
         console.log('🔍 Recherche utilisateur:', username);
+        
+        // Essayer d'abord la base de données
         const user = await getUserByUsername(username);
         
-        if (!user) {
-            console.log('❌ Utilisateur non trouvé:', username);
-            return null;
-        }
+        if (user) {
+            console.log('✅ Utilisateur trouvé dans la base:', username, 'Rôle:', user.role);
+            const isValidPassword = await bcrypt.compare(password, user.password);
+            
+            if (!isValidPassword) {
+                console.log('❌ Mot de passe incorrect pour:', username);
+                return null;
+            }
 
-        console.log('✅ Utilisateur trouvé:', username, 'Rôle:', user.role);
-        const isValidPassword = await bcrypt.compare(password, user.password);
+            console.log('✅ Authentification réussie pour:', username);
+            return user;
+        }
         
-        if (!isValidPassword) {
-            console.log('❌ Mot de passe incorrect pour:', username);
-            return null;
-        }
+        // Fallback : utilisateurs hardcodés pour Vercel
+        console.log('🔧 Utilisation des utilisateurs hardcodés pour Vercel');
+        const hardcodedUsers = [
+            {
+                id: 1,
+                username: 'admin',
+                password: '$2b$10$Sc3aR6HIwT3S7PumZ435c.YDMRBTBwUMJUqMGbaHl1GuQSecWhg0i', // admin123
+                email: 'admin@woud-voyages.com',
+                role: 'admin'
+            },
+            {
+                id: 2,
+                username: 'moderateur',
+                password: '$2b$10$7zZLW6zRmuWPnmAMnXMwqudwaJsR9RZOiA6Dp4RVfMC0l4yvIveFm', // moderateur123
+                email: 'moderateur@woud-voyages.com',
+                role: 'moderator'
+            },
+            {
+                id: 3,
+                username: 'test',
+                password: '$2b$10$coJMh5O4WYEWlVzrr.Hmnu8hpBbi4yyxCiJNJifWAZk.mF/2dTC4K', // test123
+                email: 'test@gmail.com',
+                role: 'editor'
+            }
+        ];
+        
+        const hardcodedUser = hardcodedUsers.find(u => u.username === username);
+        
+        if (hardcodedUser) {
+            console.log('✅ Utilisateur trouvé (hardcodé):', username, 'Rôle:', hardcodedUser.role);
+            const isValidPassword = await bcrypt.compare(password, hardcodedUser.password);
+            
+            if (!isValidPassword) {
+                console.log('❌ Mot de passe incorrect pour:', username);
+                return null;
+            }
 
-        console.log('✅ Authentification réussie pour:', username);
-        return user;
+            console.log('✅ Authentification réussie (hardcodé) pour:', username);
+            return hardcodedUser;
+        }
+        
+        console.log('❌ Utilisateur non trouvé:', username);
+        return null;
+        
     } catch (error) {
         console.error('❌ Erreur lors de l\'authentification:', error);
         return null;

@@ -57,6 +57,17 @@ async function ensureUploadsDir() {
 }
 ensureUploadsDir();
 
+// Route de test simple pour Vercel
+router.get('/simple-test', (req, res) => {
+    res.json({
+        message: 'Route de test fonctionne !',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development',
+        session: req.session ? 'Session exists' : 'No session',
+        cookies: req.cookies ? Object.keys(req.cookies) : 'No cookies'
+    });
+});
+
 // Route de test d'authentification
 router.get('/test-login', async (req, res) => {
     try {
